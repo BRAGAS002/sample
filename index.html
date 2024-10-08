@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venedick Bragas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+        background-color: #1b1b1b; 
+        background-image: url('pngegg (14).png');
+        background-size: 100%; 
+        background-position: top; 
+        background-repeat: no-repeat; 
+        background-blend-mode: screen;
+        
+        }
+
+        .home{
+            height: 100vh;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            font-size: 2em;
+            flex-direction: column;
+            margin-left: 75px;
+            animation: fadeIn 2.5s ease forwards;
+
+        }
+        .homenav{
+            position: fixed;
+            top: 20px;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeInText 3s ease forwards;
+        }
+        
+        .home-tab{
+            color: #FFFFFF;
+            font-size: 1.7em;
+            font-weight: bold;
+            color: #ff7b00;
+            text-decoration: none;
+        }
+
+        .tab-label {
+        padding: 10px 20px;
+        color: #FFFFFF;
+        text-decoration: none;
+        border-radius: 20px;
+        transition: background-color 0.3s, color 0.3s, transform 0.3s;
+        }
+
+        .tab-label:hover {
+        background-color: #ff7b00;
+        color: #000;
+        box-shadow: 0 0 8px #ff7b00; 
+        transform: scale(1.05);
+        
+        }
+
+        .navbar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #000000;
+            border: 3px solid #ff7b00;
+            border-radius: 50px;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+
+        .about {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            height: 100vh;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeIn 2.5s ease forwards;
+        }
+
+        .header-content {
+            display: flex;
+            max-width: 1200px;
+            width: 100%;
+            align-items: flex-start;
+            justify-content: space-evenly;
+        }
+
+        .profile-section {
+            width: 30%;
+            text-align: center;
+            transform: scale(0.9);
+            animation: scaleUp 2s ease forwards;
+        }
+
+        .profile-section img {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            transition: transform 0.5s;
+        }
+
+        .profile-section img:hover {
+            box-shadow: 0 0 8px #ff7b00;
+            transform: scale(1.1);
+        }
+
+        .profile-section h2 {
+            margin: 10px 0;
+            font-size: 1.8em;
+            color: #ff7b00;
+            animation: fadeInText 3s ease forwards;
+        }
+
+        .contacts {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .contacts a {
+            color: #ff7b00; 
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            margin: 5px 0;
+            border: 2px solid #ff7b00;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+
+        .contacts a:hover {
+            border: 2px solid #ffffff;
+            background-color: #ffffff;
+        }
+
+        .about-section {
+            width: 65%;
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+        }
+
+        .details-section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .details-section ul li:before {
+            margin-right: 10px;
+            opacity: 0;
+            animation: fadeIn 4s forwards;
+        }
+
+        .content figure img {
+            width: 300px;
+            transition: transform 0.5s ease;
+        }
+
+        .content figure img:hover {
+            transform: scale(1.1);
+        }
+
+        .certificate-section {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 30px;
+        }
+
+        .certificate-box {
+            background-color: #1a1a7d;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            width: 30%;
+        }
+
+        .certificate-box:hover {
+            transform: scale(1.05);
+        }
+
+        .certificate-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        #experience {
+            padding: 50px;
+            color: #ff7b00;
+            animation: fadeIn 2.5s ease forwards;
+        }
+
+        .experience-header {
+            font-size: 2.5em;
+            font-weight: bold;
+            text-align: center;
+            color: #ff7b00; 
+            margin-bottom: 40px;
+        }
+
+        .timeline {
+            position: relative;
+            justify-content: center;
+            border-left: 3px solid #ff7b00; 
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            padding-left: 80px;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: -11px; 
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background-color: #ffcc00; 
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px #ff7b00; 
+
+        }
+
+        .timeline-content {
+            padding: 15px 20px;
+            background-color: #1a1a1a; 
+            color: #ffffff;
+            border-radius: 10px;
+            border-left: 5px solid #ff7b00; 
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.6em;
+            color: #ff7b00; 
+            margin-bottom: 10px;
+        }
+
+        .timeline-content p {
+            font-size: 1.1em;
+            margin: 5px 0 15px;
+        }
+
+        .timeline-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .timeline-content ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .timeline-content ul li:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #ff7b00; 
+        }
+
+        .timeline-item:hover .timeline-content {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(255, 204, 0, 0.4); 
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            width: 700px;
+            margin: 0 auto;
+            animation: fadeIn 2.5s ease forwards;
+        }
+
+        .contact-form label {
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form textarea {
+            padding: 10px;
+            border: 2px solid #ff7b00;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 1em;
+            width: 100%;
+            box-sizing: border-box; 
+        }
+
+        .contact-form input[type="text"]:focus,
+        .contact-form textarea:focus {
+            border-color: #1E90FF;
+            outline: none;
+        }
+
+        .contact-form textarea {
+            resize: none;
+        }
+
+        .contact-form input[type="submit"] {
+            background-color: #ff7b00;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box; 
+        }
+
+        .contact-form input[type="submit"]:hover {
+            background-color: #1E90FF;
+            transition: .5s;
+        }
+
+        .contact-form input[type="submit"]:active {
+            opacity: 0.6;
+        }
+
+        .contact-me h2{
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            color: #ff7b00;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .skills{
+            text-align: center;
+            color: #ffffff;
+            animation: fadeIn 2.5s ease forwards;
+            
+        }
+
+        .skills h2{
+            color: #FFFFFF;
+            margin-bottom: 70px;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #ff7b00;
+        }
+
+        .skills ul{
+            display: block;
+            font-size: 1.5em;
+        }
+
+        .skills li{
+            display: inline-block;
+            list-style-type: none;
+            padding: 10px;
+            margin: 10px;
+            background-color: #ff7b00;
+            border-radius: 2px;
+        }
+
+        footer{
+            height: 15vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #1a1a1a;
+            margin-top: 50px;
+        }
+
+        footer a{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color:#ff7b00;
+            font-size: 2em;
+            border-radius: 50%;
+            border: 3px solid #ff7b00;
+            width: 50px;
+            height: 50px;
+            text-decoration: none;
+        }
+
+        footer a:hover{
+            background-color: #FFFFFF;
+            transition: .5s;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleUp {
+            from {
+                transform: scale(0.9);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>    
+</head>
+<body>
+    <nav>
+        <div class="homenav">
+            <a href="#home" class="home-tab">Venedick Bragas</a>
+        </div>
+        <div class="navbar">
+            <a href="#about" class="tab-label">About Me</a>
+            <a href="#experience" class="tab-label">Experience</a>
+            <a href="#skill" class="tab-label">Skills</a>
+        </div>
+    </nav>
+    
+    <div id="home" class="home tab-content">
+        <h1>Welcome</h1>
+        <p>Hello! I'm Venedick Bragas, and this is my portfolio. I am currently an IT student at Data Center College of the Philippines. This portfolio presents a selection of my work and projects, offering a glimpse into my skills.</p>          
+    </div>
+
+    <div id="about" class="about tab-content">
+        <div class="header-content">
+            <div class="profile-section">
+                <img src="pngegg (9).png" alt="Venedick Bragas">
+                <h2>Venedick Bragas</h2>
+                <p>IT Student</p>
+                <p>Data Center College of the Philippines</p>
+                <div class="contacts">
+                    <a href="https://www.facebook.com/brag.as.982/" class="facebook" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="mailto:bragasvenedic@gmail.com" class="email" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+                    <a href="tel:+639658440773" class="phone" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2>About Me</h2>
+                <p>Hello! I'm Venedick Bragas, an IT student. This portfolio showcases my work, hobbies, and interests in technology and design.</p>
+
+                <div class="details-section">
+                    <div>
+                        <h3>Interests</h3>
+                        <ul>
+                            <li>Playing Video Games</li>
+                            <li>Watching Anime</li>
+                            <li>Watching Movies</li>
+                        </ul>
+                    </div>
+                </div>
+                <h2>Certificate</h2>
+                <div class="certificate-section">
+                    <div class="certificate-box">
+                        <h3>Training Certificate</h3>
+                        <img src="training.jpg" alt="training certificate">
+                        <p>Certificate description goes here.</p>
+                    </div>
+                    <div class="certificate-box">
+                        <img src="coe.jpg" alt="COE Certificate">
+                        <h3>Certificate of Employment</h3>
+                        <p>Certificate description goes here.</p>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section id="experience" class="experience tab-content">
+            <h2 class="experience-header">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon"></div>
+                    <div class="timeline-content">
+                        <h3>Layout Artist @ Kebs Enterprise Printing Services-Baguio</h3>
+                        <p>March 2024 - July 2024</p>
+                        <ul>
+                            <li>Designed and printed various materials including tarpaulins, ribbons, button pins, ribbons, lanyards, medals, and stickers.</li>
+                            <li>Collaborated with clients to ensure their design needs were met.</li>
+                            <li>Utilized CorelDraw and Photoshop for creating layouts.</li>
+                            <li>Ensured all print materials met quality standards and were production-ready.</li>
+                        </ul>
+                    </div>
+                </div>
+        
+                <div class="timeline-item">
+                    <div class="timeline-icon"></div>
+                    <div class="timeline-content">
+                        <h3>Scanner Operator @ Microimaging Sales and Services-BIR Baguio</h3>
+                        <p>July 2023 - December 2023</p>
+                        <ul>
+                            <li>Assigned document locating numbers to scanned documents, enabling easy retrieval and maintaining accurate records of filing locations.</li>
+                            <li>Operated scanning equipment to digitize various documents, ensuring high-quality scans and adherence to established naming conventions.</li>
+                            <li>Conducted quality checks on scanned documents, promptly identifying and resolving discrepancies or errors.</li>
+                        </ul>
+                    </div>
+                </div>
+        
+                <div class="timeline-item">
+                    <div class="timeline-icon"></div>
+                    <div class="timeline-content">
+                        <h3>Service Crew @ The Camp-Hardin</h3>
+                        <p>March 2023 - April 2023</p>
+                        <ul>
+                            <li>Maintained cleanliness and organization of the dining and kitchen areas.</li>
+                            <li>Handled customer orders and transactions.</li>
+                            <li>Cleared tables and assisted with dishwashing.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skill" class="skills tab-content">
+            <h2>Skills</h2>
+                <ul>
+					<li>Computer Literacy</li>
+					<li>Graphic Design</li>
+                    <li>Photoshop</li>
+                    <li>CorelDraw</li>
+					<li>Print Production</li>
+					<li>Document Scanning & Management</li>
+				</ul>           
+        </section>
+        <section id="contact-me" class="contact-me tab-content">
+            <h2>Contact Me</h2>
+            <form action="/submit" method="POST">
+                <div class="contact-form">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+    
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" name="message" placeholder="Write your message here..." rows="5" required></textarea>
+    
+                    <input type="submit" value="Send Message">
+                </div>
+            </form>
+        </section>
+        <footer>
+            <a href="#home"><i class="fa-solid fa-angle-up"></i></a>
+        </footer>
+    </main>
+</body>
+</html>
