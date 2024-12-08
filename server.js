@@ -29,3 +29,13 @@ app.post('/submit', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
 });
+
+app.get('/messages', (req, res) => {
+    if (fs.existsSync(filePath)) {
+        const data = fs.readFileSync(filePath, 'utf8');
+        const messages = JSON.parse(data);
+        res.json(messages);
+    } else {
+        res.status(404).send('No messages found.');
+    }
+});
